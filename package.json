@@ -13,14 +13,16 @@
     "@sparticuz/chromium": "^123.0.1",
     "handlebars": "^4.7.8",
     "next": "^15.1.6",
+    "puppeteer": "^24.37.5",
     "puppeteer-core": "^23.7.1",
     "qrcode": "^1.5.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.11.30",
     "@types/handlebars": "^4.1.0",
+    "@types/node": "^20.11.30",
+    "@types/react": "19.2.14",
     "typescript": "^5.5.4"
   }
 }

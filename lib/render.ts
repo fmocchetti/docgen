@@ -41,12 +41,18 @@ export async function renderPdfFromTemplate({ templateHtml, templateCss, data }:
   const compile = Handlebars.compile(templateHtml, { noEscape: true, strict: false });
   const htmlBody = compile(data);
 
-  const browser = await puppeteer.launch({
-    args: chromium.args,
-    defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath(),
-    headless: chromium.headless,
-  });
+  const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_VERSION);
+
+  const browser = isServerless
+    ? await puppeteer.launch({
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath(),
+        headless: chromium.headless,
+      })
+    : await (await import("puppeteer")).default.launch({
+        headless: true,
+      });
 
   try {
     const page = await browser.newPage();

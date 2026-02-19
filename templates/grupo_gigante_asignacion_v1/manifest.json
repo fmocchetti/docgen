@@ -1,0 +1,25 @@
+{
+  "id": "grupo_gigante_asignacion_v1",
+  "display_name": "Grupo Gigante - Carta de Asignacion",
+  "description": "Carta de asignacion de equipo con folio, activos y firmas.",
+  "version": "v1",
+  "required_paths": [
+    "document.number",
+    "document.date",
+    "employee.name",
+    "employee.area",
+    "actors.delivered_by.name",
+    "assets"
+  ],
+  "optional_paths": [
+    "images.logo",
+    "instance.logo",
+    "images.qr",
+    "copies"
+  ],
+  "features": {
+    "supports_copies": true,
+    "supports_qr": true,
+    "supports_background": false
+  }
+}

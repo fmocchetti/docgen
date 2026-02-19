@@ -1,0 +1,23 @@
+{
+  "id": "qualitas_responsiva_sistemas_ti_v1",
+  "display_name": "Qualitas - Carta Responsiva Sistemas TI",
+  "description": "Carta responsiva de TI con detalle de activos y firmas.",
+  "version": "v1",
+  "required_paths": [
+    "document.date_text",
+    "employee.name",
+    "employee.area",
+    "assets"
+  ],
+  "optional_paths": [
+    "images.logo",
+    "instance.logo",
+    "images.qr",
+    "copies"
+  ],
+  "features": {
+    "supports_copies": false,
+    "supports_qr": false,
+    "supports_background": false
+  }
+}

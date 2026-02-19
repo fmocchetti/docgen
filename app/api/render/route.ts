@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { renderPdfFromTemplate } from "@/lib/render";
 import { getTemplate } from "@/lib/templates";
 import { enrichPayload } from "@/lib/enrich";
+import { getPath, validatePayload } from "@/lib/validate";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -29,9 +30,38 @@ export async function POST(req: Request) {
     return jsonError(400, "Missing instance_id, template_id or payload");
   }
 
-  // MVP: templates are hardcoded in the repo. instance_id is accepted for future routing / isolation.
-  const template = await getTemplate(String(template_id));
-  const enriched = await enrichPayload(payload);
+  let template;
+  try {
+    // MVP: templates are hardcoded in the repo. instance_id is accepted for future routing / isolation.
+    template = await getTemplate(String(template_id));
+  } catch (e: any) {
+    return jsonError(404, "Template not found", String(e?.message ?? e));
+  }
+
+  const payloadWithFallback = structuredClone(payload ?? {});
+  payloadWithFallback.images = payloadWithFallback.images ?? {};
+
+  if (!payloadWithFallback.images.logo && payloadWithFallback.instance?.logo) {
+    payloadWithFallback.images.logo = payloadWithFallback.instance.logo;
+  }
+
+  const validation = validatePayload(payloadWithFallback, template.manifest);
+
+  // Explicit folio policy: no service-side generation, required if template demands it.
+  if (template.manifest.required_paths.includes("document.number")) {
+    const folio = getPath(payloadWithFallback, "document.number");
+    const hasFolio = !(folio === undefined || folio === null || (typeof folio === "string" && folio.trim().length === 0));
+    if (!hasFolio && !validation.errors.includes("Missing required field: document.number")) {
+      validation.errors.push("Missing required field: document.number");
+      validation.ok = false;
+    }
+  }
+
+  if (!validation.ok) {
+    return jsonError(400, "Payload validation failed", validation.errors);
+  }
+
+  const enriched = await enrichPayload(payloadWithFallback);
 
   const pdfBuffer = await renderPdfFromTemplate({
     templateHtml: template.html,

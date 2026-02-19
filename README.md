@@ -19,6 +19,12 @@ npm install
 DOCGEN_API_KEY=devkey npm run dev
 ```
 
+## Browser runtime behavior
+- Local development: uses `puppeteer` and your local downloaded Chrome binary.
+- Serverless (Vercel/AWS Lambda): uses `puppeteer-core` + `@sparticuz/chromium`.
+
+This avoids `spawn ...\\Temp\\chromium ENOENT` on Windows local runs while keeping serverless compatibility.
+
 ## Render (curl)
 ```bash
 curl -X POST "http://localhost:3000/api/render" \

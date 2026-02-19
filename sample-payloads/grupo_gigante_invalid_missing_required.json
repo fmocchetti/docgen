@@ -1,0 +1,21 @@
+{
+  "instance_id": "demo",
+  "template_id": "grupo_gigante_asignacion_v1",
+  "payload": {
+    "document": {
+      "date": "2026-01-29",
+      "direction": "Grupo Gigante Inmobiliario"
+    },
+    "employee": {
+      "name": "Monsivaiz Vazquez Atzin Romina",
+      "area": "Gerencia de Recursos Humanos"
+    },
+    "actors": {
+      "delivered_by": {
+        "name": ""
+      }
+    },
+    "assets": [],
+    "images": {}
+  }
+}

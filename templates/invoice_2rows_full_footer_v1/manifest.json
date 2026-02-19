@@ -1,0 +1,23 @@
+{
+  "id": "invoice_2rows_full_footer_v1",
+  "display_name": "Invoice - 2 rows full size (footer terms) v1",
+  "description": "Header with logo + invoice meta. Full-width table. Terms & Conditions at footer.",
+  "version": "v1",
+  "required_paths": [
+    "document.name",
+    "document.date",
+    "company.name",
+    "items"
+  ],
+  "optional_paths": [
+    "images.logo",
+    "company.address_lines",
+    "company.phone",
+    "terms.text"
+  ],
+  "features": {
+    "supports_copies": false,
+    "supports_qr": false,
+    "supports_background": false
+  }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="page">
+  <div class="row row-top">
+    <div class="card logo-card">
+      {{#if images.logo}}
+        <img class="logo" src="{{images.logo}}" />
+      {{else}}
+        <div class="logo-placeholder">Logo</div>
+      {{/if}}
+    </div>
+    <div class="card meta-card">
+      <div class="meta-label">Invoice #</div>
+      <div class="meta-value">{{document.name}}</div>
+      <div class="meta-label">Invoice Date</div>
+      <div class="meta-value">{{document.date}}</div>
+    </div>
+  </div>
+
+  <div class="row row-middle">
+    <div class="card company-card">
+      <strong>{{company.name}}</strong>
+      {{#each company.address_lines}}
+        <div>{{this}}</div>
+      {{/each}}
+      {{#if company.phone}}
+        <div>{{company.phone}}</div>
+      {{/if}}
+    </div>
+    <div class="card side-card">
+      <strong>Billing Notes</strong>
+      <div>Reference this invoice number in all payments.</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="card table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Quantity</th>
+            <th>Description</th>
+            <th>Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each items}}
+            <tr>
+              <td>{{quantity}}</td>
+              <td>{{description}}</td>
+              <td>{{cost}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row row-footer">
+    <div class="card footer-card">
+      <strong>Terms and Conditions</strong>
+      {{#if terms.text}}
+        <div>{{terms.text}}</div>
+      {{else}}
+        <div>Terms are defined in the commercial agreement.</div>
+      {{/if}}
+    </div>
+    <div class="card footer-card">
+      <strong>Thank You</strong>
+      <div>We appreciate your business.</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

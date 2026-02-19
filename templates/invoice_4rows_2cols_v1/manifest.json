@@ -1,0 +1,23 @@
+{
+  "id": "invoice_4rows_2cols_v1",
+  "display_name": "Invoice - 4 rows / 2 columns v1",
+  "description": "Top: logo + invoice. Second: company + extra card. Third: big table. Fourth: 2 small cards.",
+  "version": "v1",
+  "required_paths": [
+    "document.name",
+    "document.date",
+    "company.name",
+    "items"
+  ],
+  "optional_paths": [
+    "images.logo",
+    "company.address_lines",
+    "company.phone",
+    "terms.text"
+  ],
+  "features": {
+    "supports_copies": false,
+    "supports_qr": false,
+    "supports_background": false
+  }
+}

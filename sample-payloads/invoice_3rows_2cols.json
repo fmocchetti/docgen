@@ -1,0 +1,37 @@
+{
+  "instance_id": "demo",
+  "template_id": "invoice_3rows_2cols_v1",
+  "payload": {
+    "document": {
+      "name": "INV-2026-0003",
+      "date": "2026-02-19"
+    },
+    "company": {
+      "name": "Northwind Supplies LLC",
+      "address_lines": [
+        "123 Market St",
+        "Suite 500",
+        "Austin, TX 78701"
+      ],
+      "phone": "+1 (512) 555-0182"
+    },
+    "items": [
+      {
+        "quantity": 4,
+        "description": "Workstation setup service",
+        "cost": "$95.00"
+      },
+      {
+        "quantity": 2,
+        "description": "Network switch installation",
+        "cost": "$210.00"
+      }
+    ],
+    "terms": {
+      "text": "Payment due within 15 days. Late payments may incur a 2% monthly fee."
+    },
+    "images": {
+      "logo": "https://dummyimage.com/320x96/ffffff/000000.png&text=NORTHWIND"
+    }
+  }
+}

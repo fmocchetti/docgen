@@ -1,0 +1,23 @@
+{
+  "id": "invoice_4rows_mixed_columns_v1",
+  "display_name": "Invoice - 4 rows mixed columns v1",
+  "description": "Mixed layout with terms block and footer cards.",
+  "version": "v1",
+  "required_paths": [
+    "document.name",
+    "document.date",
+    "company.name",
+    "items"
+  ],
+  "optional_paths": [
+    "images.logo",
+    "company.address_lines",
+    "company.phone",
+    "terms.text"
+  ],
+  "features": {
+    "supports_copies": false,
+    "supports_qr": false,
+    "supports_background": false
+  }
+}

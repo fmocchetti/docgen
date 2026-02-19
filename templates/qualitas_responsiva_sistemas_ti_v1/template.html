@@ -1,0 +1,79 @@
+{{!--
+Qualitas - Carta Responsiva Dirección de Sistemas TI (v1)
+Expected payload (minimum):
+{
+  "document": { "place":"CDMX", "date_text":"a __ de ___ de 20__", "date":"2026-02-18" },
+  "employee": { "name":"...", "area":"...", "position":"..." },
+  "company": { "name":"Quálitas Compañía de Seguros, S.A. de C.V." },
+  "assets":[ { "description":"Laptop Dell", "serial":"...", "model":"...", "inventory_id":"..." } ],
+  "actors": { "employee": { "name":"..." }, "it": { "name":"..." } },
+  "images": { "employee_signature":"...", "it_signature":"..." }
+}
+--}}
+<section class="page">
+  <h1 class="title">CARTA RESPONSIVA DIRECCIÓN DE SISTEMAS TI</h1>
+
+  <div class="place-date">
+    <span><b>Lugar:</b> {{default document.place "_________"}}</span>
+    <span class="spacer"></span>
+    <span>{{default document.date_text "a __ de ___ de 20__"}}</span>
+  </div>
+
+  <p>
+    Por medio de la presente yo <b>{{default employee.name "____________________"}}</b>,
+    del Área <b>{{default employee.area "____________________"}}</b>,
+    hago constar que recibí de <b>{{default company.name "Quálitas Compañía de Seguros, S.A. de C.V."}}</b>,
+    el siguiente equipo para uso exclusivo del desempeño de mis actividades laborales asignadas y consta de las siguientes características:
+  </p>
+
+  <table class="assets">
+    <thead>
+      <tr>
+        <th>Descripción</th>
+        <th>Modelo</th>
+        <th>Serial</th>
+        <th>Inventario</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each assets}}
+      <tr>
+        <td>{{description}}</td>
+        <td>{{default model ""}}</td>
+        <td>{{default serial ""}}</td>
+        <td>{{default inventory_id ""}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <p>El equipo se recibe en perfecto estado y funcional.</p>
+
+  <ol class="clauses">
+    <li>Me obligo a cumplir con los lineamientos de la “Política de Asignación y Uso de Equipo y Herramientas de Trabajo” para el buen uso de este.</li>
+    <li>Me obligo a entregar dicho equipo en el momento que sea solicitado por Sistemas TI, RH, o mi Director y/o jefe inmediato.</li>
+    <li>Quedo en acuerdo que las aplicaciones instaladas en el equipo que recibo son las únicas que necesito para trabajar y me comprometo a no instalar ninguna otra, de necesitarlo lo solicitaré a través del CAST (sistemasti@qualitas.com.mx). Así mismo estoy de acuerdo con las sanciones legales en que podré incurrir por desapego a la presente obligación.</li>
+    <li>Para el caso de Internet Móvil y equipo celular no se deberá llamar ni acudir al Centro de Atención a Clientes de la telefónica, se deberá reportar al CAST.</li>
+    <li>En caso de extravío, daño o descuido, me responsabilizo a pagar el costo de reparación y/o la reposición del equipo o costos que se deriven y autorizo a que me sea descontado vía nómina, de acuerdo con la Política de Asignación y Uso de equipo y herramientas de trabajo.</li>
+    <li>En caso de robo se deberá levantar el acta correspondiente y presentar el original a Martha Salazar y reportar al CAST enviando una copia de la misma.</li>
+    <li>Doy consentimiento para que tales dispositivos sean monitoreados en cualquier momento por el área de Sistemas TI.</li>
+    <li>El equipo es propiedad de Quálitas, no debe ser retirado en ningún momento de la oficina asignada (salvo que sea un equipo laptop). Cualquier movimiento y/o salida del lugar asignado, debe ser reportado al CAST enviando un correo a sistemasti@qualitas.com.mx</li>
+    <li>Me obligo a no utilizar el equipo que recibo, así como las aplicaciones instaladas en el mismo, para propósitos distintos a mis funciones laborales, ni prestarlas o compartirlas a cualquier otra persona, que incluso sea parte de QUÁLITAS, salvo que correspondan a las áreas del numeral 3, o que cuente con autorización expresa y por escrito de mi Director y/o jefe inmediato.</li>
+  </ol>
+
+  <div class="signatures">
+    <div class="sig">
+      <div class="sig-img">{{#if images.employee_signature}}<img src="{{images.employee_signature}}" alt="Firma empleado" />{{/if}}</div>
+      <div class="sig-line"></div>
+      <div class="sig-label">Recibo el equipo</div>
+      <div class="sig-name">Nombre, Puesto y Firma Empleado</div>
+    </div>
+
+    <div class="sig">
+      <div class="sig-img">{{#if images.it_signature}}<img src="{{images.it_signature}}" alt="Firma entrega" />{{/if}}</div>
+      <div class="sig-line"></div>
+      <div class="sig-label">Entrega</div>
+      <div class="sig-name">Nombre y Firma</div>
+    </div>
+  </div>
+</section>

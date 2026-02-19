@@ -1,0 +1,26 @@
+{
+  "instance_id": "demo",
+  "template_id": "qualitas_responsiva_sistemas_ti_v1",
+  "payload": {
+    "document": {
+      "place": "CDMX",
+      "date_text": "a 18 de febrero de 2026"
+    },
+    "company": {
+      "name": "Qu\u00e1litas Compa\u00f1\u00eda de Seguros, S.A. de C.V."
+    },
+    "employee": {
+      "name": "____________________",
+      "area": "____________________"
+    },
+    "assets": [
+      {
+        "description": "Laptop",
+        "model": "Latitude 5420",
+        "serial": "ABC123",
+        "inventory_id": "INV-001"
+      }
+    ],
+    "images": {}
+  }
+}

@@ -1,0 +1,34 @@
+@page { size: A4; margin: 14mm; }
+body { font-family: Arial, Helvetica, sans-serif; color: #111; }
+.page { position: relative; min-height: 270mm; }
+
+.title { text-align: center; font-size: 16px; margin: 0 0 10mm; letter-spacing: 0.5px; }
+
+.place-date { display: flex; align-items: baseline; font-size: 12px; margin-bottom: 6mm; }
+.place-date .spacer { flex: 1; }
+
+p { font-size: 12px; line-height: 1.35; margin: 4mm 0; }
+
+.assets { width: 100%; border-collapse: collapse; font-size: 11px; margin: 4mm 0 6mm; }
+.assets th, .assets td { border: 1px solid #333; padding: 4px 6px; }
+.assets thead { display: table-header-group; }
+.assets tr { break-inside: avoid; }
+
+.clauses { font-size: 11.5px; line-height: 1.35; margin: 0; padding-left: 18px; }
+.clauses li { margin: 2.5mm 0; }
+
+.signatures {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18mm;
+  display: flex;
+  justify-content: space-between;
+  gap: 16mm;
+}
+.sig { width: 48%; text-align: center; font-size: 11px; }
+.sig-img { height: 40px; margin-bottom: 2px; }
+.sig-img img { max-height: 40px; max-width: 100%; object-fit: contain; }
+.sig-line { border-bottom: 1px solid #111; height: 12px; margin: 2px 0 4px; }
+.sig-label { font-weight: 700; margin-top: 2px; }
+.sig-name { font-size: 10px; margin-top: 2px; }

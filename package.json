@@ -1,0 +1,26 @@
+{
+  "name": "docgen-mvp",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@sparticuz/chromium": "^123.0.1",
+    "handlebars": "^4.7.8",
+    "next": "^15.1.6",
+    "puppeteer-core": "^23.7.1",
+    "qrcode": "^1.5.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "@types/handlebars": "^4.1.0",
+    "typescript": "^5.5.4"
+  }
+}

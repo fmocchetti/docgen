@@ -1,0 +1,102 @@
+{{!--
+Expected payload (minimum):
+{
+  "document": { "number": "RESP-2026-01-29-57391", "date":"2026-01-29", "direction":"..." },
+  "actors": { "received_by": {"name":"..."}, "delivered_by":{"name":"..."} },
+  "employee": { "name":"...", "area":"..." },
+  "assets":[ { "qty":1, "description":"Computer: ...", "details":"NAME: ... / ID: ... / SN: ..." } ],
+  "images": { "logo":"https://...", "delivered_signature":"data:image/png;base64,...", "received_signature":"..." },
+  "copies":[{"label":"ORIGINAL"}]
+}
+--}}
+{{#each copies}}
+<section class="page">
+  <div class="top">
+    <div class="logo-wrap">
+      {{#if ../images.logo}}
+        <img class="logo" src="{{../images.logo}}" alt="Logo" />
+      {{/if}}
+    </div>
+    <div class="doc-meta">
+      <div><b>Folio:</b> {{../document.number}}</div>
+      <div><b>Fecha de Entrega:</b> {{formatDate ../document.date}}</div>
+      <div><b>Dirección:</b> {{../document.direction}}</div>
+    </div>
+  </div>
+
+  <div class="employee-block">
+    <div><b>Nombre del Empleado:</b> {{../employee.name}}</div>
+    <div><b>Área:</b> {{../employee.area}}</div>
+  </div>
+
+  <div class="intro">Recibí de DTI lo siguiente:</div>
+
+  <table class="assets">
+    <thead>
+      <tr>
+        <th class="qty">Qty.</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each ../assets}}
+      <tr>
+        <td class="qty">{{default qty 1}}</td>
+        <td>
+          <div class="asset-desc">{{description}}</div>
+          {{#if details}}<div class="asset-details">{{details}}</div>{{/if}}
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <div class="policy">
+    <p>Establecer directrices claras y equitativas para la asignación, uso y mantenimiento de los equipos de cómputo. Esta política tiene como objetivo asegurar que todos los empleados de <b>{{default ../company.name "GRUPO GIGANTE"}}</b> tengan acceso a las herramientas necesarias proporcionadas por la organización para desempeñar sus funciones de manera efectiva.</p>
+    <p>El departamento de TI será responsable de realizar el mantenimiento preventivo y correctivo de los equipos. Los usuarios deben informar cualquier problema técnico inmediatamente por medio de nuestro canal de comunicación de tickets <span class="link">{{default ../company.support_url "https://servicedesk.grupogigante.com.mx"}}</span>.</p>
+
+    <h3>Devolución de Equipos</h3>
+    <p><b>Proceso de Devolución:</b> Al finalizar la relación laboral, los equipos deberán ser devueltos en buen estado, con todos los accesorios y componentes originales con los cuales fueron entregados al departamento de TI.</p>
+    <p><b>Cumplimiento:</b> Los empleados deben cumplir con todas las políticas relacionadas con el uso de tecnología.</p>
+
+    <h3>Siniestros de equipo</h3>
+    <p><b>Robo:</b> El usuario deberá presentar una denuncia ante el ministerio público para generar un Acta Ratificada del siniestro y se le deberá entregar al área de Customer Service.</p>
+    <p><b>Pérdida:</b> El usuario deberá presentar una denuncia ante el ministerio público para generar un Acta Ratificada del siniestro y se le deberá entregar al área de Customer Service.</p>
+    <p><b>Daños</b> accidentales o por mal uso, como aquellos causados por caídas, derrames de líquidos, sobrecalentamiento o daños.</p>
+    <p>Para todos los casos anteriores:</p>
+    <ul>
+      <li>Se hará uso de la garantía vigente contratada en caso de que aplique.</li>
+      <li>La información se encuentra protegida porque el disco duro del equipo se encuentra cifrado, siempre y cuando el daño no fue de manera física en el disco del equipo.</li>
+    </ul>
+  </div>
+
+  <div class="signatures">
+    <div class="sig-block">
+      <div class="sig-img">
+        {{#if ../images.delivered_signature}}
+          <img src="{{../images.delivered_signature}}" alt="Firma entrega" />
+        {{/if}}
+      </div>
+      <div class="sig-line"></div>
+      <div class="sig-name">{{../actors.delivered_by.name}}</div>
+      <div class="sig-role">Entrego Soporte a Oficinas DTI</div>
+    </div>
+
+    <div class="sig-block">
+      <div class="sig-img">
+        {{#if ../images.received_signature}}
+          <img src="{{../images.received_signature}}" alt="Firma recibe" />
+        {{/if}}
+      </div>
+      <div class="sig-line"></div>
+      <div class="sig-name">{{../employee.name}}</div>
+      <div class="sig-role">Recibí equipo y/o dispositivos</div>
+    </div>
+  </div>
+
+  <div class="bottom-note">{{default ../document.footer_code "FMT_05_Carta de Asignación de Equipo V1"}}</div>
+  <div class="page-no">Page {{addOne @index}} of {{../copies.length}}</div>
+</section>
+
+{{#unless @last}}<div class="page-break"></div>{{/unless}}
+{{/each}}

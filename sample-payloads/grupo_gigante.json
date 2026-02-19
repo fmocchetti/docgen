@@ -1,0 +1,40 @@
+{
+  "instance_id": "demo",
+  "template_id": "grupo_gigante_asignacion_v1",
+  "payload": {
+    "company": {
+      "name": "GRUPO GIGANTE",
+      "support_url": "https://servicedesk.grupogigante.com.mx"
+    },
+    "document": {
+      "number": "RESP-2026-01-29-57391",
+      "date": "2026-01-29",
+      "direction": "Grupo Gigante Inmobiliario",
+      "footer_code": "FMT_05_Carta de Asignaci\u00f3n de Equipo V1"
+    },
+    "employee": {
+      "name": "Monsivaiz V\u00e1zquez Atzin Romina",
+      "area": "Gerencia de Recursos Humanos"
+    },
+    "actors": {
+      "delivered_by": {
+        "name": "Miguel Cervantes"
+      }
+    },
+    "assets": [
+      {
+        "qty": 1,
+        "description": "Computer: Lenovo ThinkCentre M70g Gen 4 (12E4S6LP00)",
+        "details": "NAME: GIDP14ARMONSIVA / ID: GGI-MJOLPTCJ / SN: MJOLPTCJ"
+      }
+    ],
+    "copies": [
+      {
+        "label": "ORIGINAL"
+      }
+    ],
+    "images": {
+      "logo": "https://dummyimage.com/300x120/ffffff/000000.png&text=GRUPO+GIGANTE"
+    }
+  }
+}
